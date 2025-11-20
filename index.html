@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AllInOne – Free Online Tools</title>
+  <title>All In One – Free Online Tools</title>
   <style>
     body {
       margin: 0;
@@ -58,23 +58,14 @@
     button:hover {
       background: #3b5bdb;
     }
-    .ad-space {
-      background: #e9ecef;
-      text-align: center;
-      padding: 30px;
-      margin: 25px 0;
-      border-radius: 12px;
-      font-weight: bold;
-      border: 2px dashed #adb5bd;
-    }
   </style>
 </head>
+
 <body>
 
-<header>AllInOne</header>
-<div class="container">
+<header>All In One</header>
 
-  <div class="ad-space">AD SPACE</div>
+<div class="container">
 
   <div class="tool-grid">
 
@@ -114,8 +105,6 @@
 
   </div>
 
-  <div class="ad-space">AD SPACE</div>
-
 </div>
 
 <script>
@@ -131,72 +120,4 @@ function compressImage() {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
-      canvas.toBlob(blob => {
-        const url = URL.createObjectURL(blob);
-        const link = document.getElementById('compressDownload');
-        link.href = url;
-        link.download = 'compressed.jpg';
-        link.style.display = 'block';
-        link.textContent = 'Download Compressed Image';
-      }, 'image/jpeg', 0.6);
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-
-// IMAGE RESIZER
-function resizeImage() {
-  const file = document.getElementById('resizeInput').files[0];
-  const w = parseInt(document.getElementById('resizeWidth').value);
-  const h = parseInt(document.getElementById('resizeHeight').value);
-  if (!file || !w || !h) return alert("Upload image and enter width/height");
-
-  const reader = new FileReader();
-  reader.onload = e => {
-    const img = new Image();
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = w;
-      canvas.height = h;
-      ctx.drawImage(img, 0, 0, w, h);
-      canvas.toBlob(blob => {
-        const url = URL.createObjectURL(blob);
-        const link = document.getElementById('resizeDownload');
-        link.href = url;
-        link.download = 'resized.jpg';
-        link.style.display = 'block';
-        link.textContent = 'Download Resized Image';
-      }, 'image/jpeg', 0.9);
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-
-// QR GENERATOR
-function generateQR() {
-  const text = document.getElementById('qrText').value;
-  if (!text) return alert("Enter text or URL");
-  const qrAPI = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(text)}`;
-  document.getElementById('qrResult').innerHTML = `<img src='${qrAPI}' />`;
-}
-
-// IMAGE TO BASE64
-function convertBase64() {
-  const file = document.getElementById('b64Input').files[0];
-  if (!file) return alert("Upload an image");
-
-  const reader = new FileReader();
-  reader.onload = e => {
-    document.getElementById('b64Output').value = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-</script>
-
-</body>
-</html>
+      canvas.height = img
